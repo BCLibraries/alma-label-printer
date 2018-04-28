@@ -1,0 +1,121 @@
+{
+  "bib_data": {
+    "mms_id": "99123840310001021",
+    "title": "Fodor's Ireland.",
+    "author": null,
+    "issn": "0090-0648",
+    "isbn": null,
+    "complete_edition": "",
+    "network_number": [
+      "AFJ3248",
+      "(OCoLC)ocm40454834",
+      "(OCoLC)ocm01784736",
+      "(Aleph)000880576BCL01"
+    ],
+    "place_of_publication": "New York :",
+    "publisher_const": "D McKay",
+    "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/99123840310001021"
+  },
+  "holding_data": {
+    "holding_id": "22381633570001021",
+    "call_number_type": {
+      "value": "0",
+      "desc": "Library of Congress classification"
+    },
+    "call_number": "DA978 .I7",
+    "accession_number": "",
+    "copy_id": "00000",
+    "in_temp_location": false,
+    "temp_library": {
+      "value": null,
+      "desc": null
+    },
+    "temp_location": {
+      "value": null,
+      "desc": null
+    },
+    "temp_call_number_type": {
+      "value": "",
+      "desc": null
+    },
+    "temp_call_number": "",
+    "temp_policy": {
+      "value": "",
+      "desc": null
+    },
+    "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/99123840310001021/holdings/22381633570001021"
+  },
+  "item_data": {
+    "pid": "23381633500001021",
+    "barcode": "39031028676716",
+    "creation_date": "2012-06-10Z",
+    "modification_date": "2018-04-26Z",
+    "base_status": {
+      "value": "0",
+      "desc": "Item not in place"
+    },
+    "physical_material_type": {
+      "value": "ISSUE",
+      "desc": "Issue"
+    },
+    "policy": {
+      "value": "01",
+      "desc": "01"
+    },
+    "provenance": {
+      "value": "",
+      "desc": null
+    },
+    "po_line": "00-29794",
+    "is_magnetic": false,
+    "year_of_issue": "",
+    "enumeration_a": "",
+    "enumeration_b": "",
+    "enumeration_c": "",
+    "enumeration_d": "",
+    "enumeration_e": "",
+    "enumeration_f": "",
+    "enumeration_g": "",
+    "enumeration_h": "",
+    "chronology_i": "2001",
+    "chronology_j": "",
+    "chronology_k": "",
+    "chronology_l": "",
+    "chronology_m": "",
+    "description": "2001",
+    "receiving_operator": "",
+    "process_type": {
+      "value": "LOAN",
+      "desc": "Loan"
+    },
+    "library": {
+      "value": "ONL",
+      "desc": "O'Neill"
+    },
+    "location": {
+      "value": "STACK",
+      "desc": "Stacks"
+    },
+    "alternative_call_number": "",
+    "alternative_call_number_type": {
+      "value": "",
+      "desc": null
+    },
+    "storage_location_id": "",
+    "pages": "",
+    "pieces": "",
+    "public_note": "",
+    "fulfillment_note": "",
+    "internal_note_1": "",
+    "internal_note_2": "",
+    "internal_note_3": "",
+    "statistics_note_1": "",
+    "statistics_note_2": "",
+    "statistics_note_3": "",
+    "requested": false,
+    "edition": null,
+    "imprint": null,
+    "language": null
+  },
+  "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/99123840310001021/holdings/22381633570001021/items/23381633500001021"
+}
