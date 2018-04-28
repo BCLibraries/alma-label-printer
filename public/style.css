@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1in 1in 1in 1in 1in 1in 1in 1in 1in 1in;
+    grid-template-rows: 2.65in 2.65in 2.65in;
+}
+
+.item {
+    display: block;
+}

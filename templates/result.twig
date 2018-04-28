@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    {% for page in pages %}
+        <div class="page">
+            {% for item in page %}
+                <div class="item">
+                    <div class="location">{{ item.location }}</div>
+                    <div class="call_number">{{ item.callNumber }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

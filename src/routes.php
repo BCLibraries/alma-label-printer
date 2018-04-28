@@ -1,34 +1,23 @@
 <?php
 
-use BCLib\AlmaPrinter\AlmaClient;
-use BCLib\AlmaPrinter\RedisCache;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\UploadedFile;
 
-// Routes
-
+// Get upload form
 $app->get(
     '/[{name}]',
     function (Request $request, Response $response, array $args) {
-        // Sample log message
         $this->logger->info("Slim-Skeleton '/' route");
-
-        // Render index view
-        return $this->renderer->render($response, 'index.phtml', $args);
+        return $this->view->render($response, 'index.twig', $args);
     }
 );
 
+// Handle an upload
 $app->post(
     '/upload',
     function (Request $request, Response $response) {
         $upload_dir = $this->get('settings')['uploads_dir'];
-
-        $cache = $_ENV['CACHE_ENGINE'] === 'redis' ? new RedisCache($_ENV['REDIS_HOST']) : null;
-        $alma_client = new AlmaClient($_ENV['ALMA_API_KEY'], $cache);
-
-        print_r($cache);
-
         $uploaded_files = $request->getUploadedFiles();
 
         $uploaded_file = $uploaded_files['csv_file'];
@@ -41,15 +30,13 @@ $app->post(
         $csv = new SplFileObject($full_path);
         while (!$csv->eof()) {
             $row = $csv->fgetcsv();
-            $alma_client->add($row[0]);
+            $this->alma_client->add($row[0]);
         }
-
-        $results = $alma_client->fetch();
-        foreach ($results as $result) {
-            echo "{$result->getCallNumber()}<br>";
-        }
-
         unlink($full_path);
+
+        $result_set = $this->alma_client->fetch();
+
+        return $this->view->render($response, 'result.twig', ['pages' => $result_set->getPages(30)]);
     }
 );
 

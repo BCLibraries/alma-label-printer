@@ -54,10 +54,10 @@ class AlmaClient
     }
 
     /**
-     * @return Item[]
+     * @return ResultSet
      * @throws \Throwable
      */
-    public function fetch(): array
+    public function fetch(): ResultSet
     {
         $results = [[]];
         $batches = array_chunk($this->barcodes, $this::UPLOAD_BATCH_SIZE);
@@ -67,7 +67,7 @@ class AlmaClient
             $results[] = $this->sendBatch($batch);
             $throttle->throttle();
         }
-        return array_merge(...$results);
+        return new ResultSet(array_merge(...$results));
     }
 
     private function getURL(string $barcode): string
