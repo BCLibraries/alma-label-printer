@@ -1,12 +1,12 @@
 <?php
 
+use BCLib\AlmaPrinter\OutputTemplate;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Http\UploadedFile;
 
 // Get upload form
 $app->get(
-    '/[{name}]',
+    '/',
     function (Request $request, Response $response, array $args) {
         $this->logger->info("Slim-Skeleton '/' route");
         return $this->view->render($response, 'index.twig', $args);
@@ -17,34 +17,40 @@ $app->get(
 $app->post(
     '/upload',
     function (Request $request, Response $response) {
+        $uploaded_file = $request->getUploadedFiles()['csv-file'];
         $upload_dir = $this->get('settings')['uploads_dir'];
-        $uploaded_files = $request->getUploadedFiles();
 
-        $uploaded_file = $uploaded_files['csv_file'];
-        if ($uploaded_file->getError() === UPLOAD_ERR_OK) {
-            $filename = moveUploadedFile($upload_dir, $uploaded_file);
+        $barcodes = \BCLib\AlmaPrinter\CSVReader::read($uploaded_file, $upload_dir);
+
+        foreach ($barcodes as $barcode) {
+            $this->alma_client->add($barcode);
         }
-
-        $full_path = "$upload_dir/$filename";
-
-        $csv = new SplFileObject($full_path);
-        while (!$csv->eof()) {
-            $row = $csv->fgetcsv();
-            $this->alma_client->add($row[0]);
-        }
-        unlink($full_path);
-
         $result_set = $this->alma_client->fetch();
 
-        return $this->view->render($response, 'result.twig', ['pages' => $result_set->getPages(30)]);
+        $template = getTemplate($request->getParam('output-type'));
+        $view_options = ['pages' => $result_set->getPages($template->items_per_page)];
+
+        return $this->view->render($response, $template->name, $view_options);
     }
 );
 
-function moveUploadedFile(string $directory, UploadedFile $uploaded_file): string
+$app->get(
+    '/barcode/{value}',
+    function (Request $request, Response $response, $args) {
+        $generator = new \Picqer\Barcode\BarcodeGeneratorSVG();
+        echo $generator->getBarcode($args['value'], $generator::TYPE_CODE_39E_CHECKSUM);
+    }
+);
+
+function getTemplate(string $template_input): OutputTemplate
 {
-    $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
-    $basename = bin2hex(random_bytes(8));
-    $filename = sprintf('%s.%0.8s', $basename, $extension);
-    $uploaded_file->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-    return $filename;
+    $spine_label = new OutputTemplate('spine-label.twig', 10);
+    $slip_1 = new OutputTemplate('slip-1.twig', 4);
+    $slip_2 = new OutputTemplate('slip-2.twig', 4);
+    $map = [
+        'spine-label' => $spine_label,
+        'slip-1'      => $slip_1,
+        'slip-2'      => $slip_2
+    ];
+    return $map[$template_input];
 }

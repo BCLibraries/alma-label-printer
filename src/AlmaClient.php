@@ -32,18 +32,20 @@ class AlmaClient
      */
     private $cache;
 
+    /**
+     * @var ItemResponseParser
+     */
+    private $parser;
+
+
     private const UPLOAD_BATCH_SIZE = 8;
 
     private const MAX_CALLS_PER_SECOND = 10;
 
-    public function __construct(string $key, Cache $cache = null)
+    public function __construct(string $key, Cache $cache = null, ItemResponseParser $parser)
     {
-        if (null === $cache) {
-            $this->cache = new NullCache();
-        } else {
-            $this->cache = $cache;
-        }
-
+        $this->parser = $parser;
+        $this->cache = $cache ?? new NullCache();
         $this->key = $key;
         $this->client = new Client();
     }
@@ -104,7 +106,7 @@ class AlmaClient
 
         foreach ($results as $result) {
             $json = $result->getBody();
-            $item = ItemResponseParser::parse($json);
+            $item = $this->parser->parse($json);
             $responses[] = $item;
             $this->cache->add($item);
         }

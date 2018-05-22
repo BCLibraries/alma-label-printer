@@ -1,0 +1,64 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+header nav {
+  @extend .container;
+  @extend .navbar;
+  @extend .navbar-expand-lg;
+
+  a {
+    @extend .navbar-brand;
+  }
+}
+
+main {
+  @extend .container;
+}
+
+.file-upload-controls {
+  @extend .form-group;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="file"] {
+  @extend .form-control-file;
+}
+
+input[type="radio"] {
+  @extend .form-check-input;
+}
+
+input[type="radio"] ~ label {
+  @extend .form-check-label;
+  font-weight: normal;
+}
+
+button[type="submit"] {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .mb-2;
+}
+
+form {
+  @include make-col(6);
+}
+
+.instructions {
+  @include make-col(6);
+}
+
+.card img {
+  @extend .card-img-top;
+
+  .card-body {
+    h5 {
+      @extend .card-title;
+    }
+
+    p {
+      @extend .card-text;
+    }
+  }
+}

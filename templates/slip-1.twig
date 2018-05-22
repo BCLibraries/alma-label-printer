@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Libre+Barcode+39|Libre+Barcode+39+Extended|Libre+Barcode+39+Extended+Text" rel="stylesheet">
+    <link rel="stylesheet" href="/slip-1.css">
+</head>
+<body>
+{% for page in pages %}
+    <div class="page">
+        {% for item in page %}
+            <div class="item">
+                <div class="barcode">
+                    <img src="data:image/png;base64,{{ item.barcodeData }}" />
+                </div>
+                <div class="call_number">
+                    {% for part in item.spineLabelCallNumber %}
+                        <div>{{ part }}</div>
+                    {% endfor %}
+                </div>
+                <div class="accession_number">
+                    {{ item.accessionNumber }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+</body>
+</html>

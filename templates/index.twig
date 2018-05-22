@@ -1,10 +1,27 @@
-<form method="post" enctype="multipart/form-data" action="/upload">
-    <p>
-        <label>Add file (single): </label><br/>
-        <input type="file" name="csv_file"/>
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpineOMatic bulk</title>
+    <link rel="stylesheet" href="/css/local.css">
+</head>
+<body>
 
-    <p>
-        <input type="submit"/>
-    </p>
-</form>
+<header>
+    <nav>
+        <a href="/">SpineOMatic bulk</a>
+    </nav>
+</header>
+
+<main>
+    <div class="row">
+        {% include "form.twig" %}
+        {% include "instructions.twig" %}
+    </div>
+</main>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

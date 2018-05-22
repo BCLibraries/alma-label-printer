@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/spine-label.css">
+</head>
+<body>
+<div class="container">
+    {% for page in pages %}
+        <div class="page">
+            {% for item in page %}
+                <div class="item">
+                    <div class="location">{{ item.location }}</div>
+                    <div class="call_number">
+                        {% for part in item.spineLabelCallNumber %}
+                            <div>{{ part }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="accession_number">
+                        {{ item.accessionNumber }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

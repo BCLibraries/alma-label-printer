@@ -26,7 +26,8 @@
     "monolog/monolog": "^1.17",
     "guzzlehttp/guzzle": "~6.0",
     "vlucas/phpdotenv": "^2.4",
-    "slim/twig-view": "^2.3"
+    "slim/twig-view": "^2.3",
+    "picqer/php-barcode-generator": "^0.2.2"
   },
   "autoload": {
     "psr-4": {

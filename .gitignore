@@ -4,3 +4,6 @@
 /uploads/*
 !/uploads/README.md
 /.env
+node_modules
+/view-cache/*
+!/view-cache/README.md

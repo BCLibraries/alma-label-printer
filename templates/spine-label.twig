@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/spine-label.css">
 </head>
 <body>
 <div class="container">
@@ -10,7 +10,11 @@
             {% for item in page %}
                 <div class="item">
                     <div class="location">{{ item.location }}</div>
-                    <div class="call_number">{{ item.callNumber }}</div>
+                    <div class="call_number">
+                        {% for part in item.spineLabelCallNumber %}
+                            <div>{{ part }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
             {% endfor %}
         </div>

@@ -1,0 +1,38 @@
+body {
+    font-size: 11pt;
+    font-family: Geneva, sans-serif;
+}
+
+.container {
+    display: grid;
+}
+
+.page {
+    height: 8.5in;
+    width: 11in;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 100%;
+}
+
+.item {
+    display: block;
+    padding: .05in;
+    border: 1px solid #ccc;
+    margin-left: -1px;
+    margin-bottom: -1px;
+}
+
+.location {
+    margin-bottom: 1em;
+    font-size: 10pt
+}
+
+.call_number {
+    margin-top: .5in;
+    margin-bottom: .5in;
+}
+
+.page {
+    page-break-after: always;
+}
