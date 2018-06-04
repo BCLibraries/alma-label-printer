@@ -15,12 +15,16 @@ body {
     grid-template-rows: 100%;
 }
 
+.barcode img {
+    max-width: 1.75in;
+}
+
 .item {
     display: block;
-    padding: .05in;
-    border: 1px solid #ccc;
+    padding: 6mm 4.6mm;
     margin-left: -1px;
     margin-bottom: -1px;
+    position: relative;
 }
 
 .location {
@@ -35,4 +39,26 @@ body {
 
 .page {
     page-break-after: always;
+}
+
+.title {
+    margin-bottom: 4em;
+}
+
+.cut-line {
+    position: absolute;
+    top: 2in;
+    width: 1px;
+    left: 262px;
+}
+
+span.cut-mark {
+    margin-bottom: 3in;
+    display: block;
+    /* Use box shadow for lines, because background colors don't print */
+    box-shadow: 0 -20px 0 0 #888;
+}
+
+.item:nth-child(4n) .cut-line {
+    display: none;
 }

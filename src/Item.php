@@ -19,7 +19,7 @@ class Item
         $this->label_map = $label_map;
     }
 
-    public function getTextBarcodeText(): string
+    public function getBarcodeText(): string
     {
         return $this->barcode;
     }

@@ -19,7 +19,7 @@ class RedisCache implements Cache
 
     public function add(Item $item): void
     {
-        $key = $item->getTextBarcodeText();
+        $key = $item->getBarcodeText();
         $expire_at = time() + 60 * 60;
         $serialized = serialize($item);
         $this->redis->set($key, $serialized);

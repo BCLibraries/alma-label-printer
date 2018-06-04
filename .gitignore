@@ -7,3 +7,4 @@
 node_modules
 /view-cache/*
 !/view-cache/README.md
+*.log

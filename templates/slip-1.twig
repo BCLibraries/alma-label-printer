@@ -9,16 +9,24 @@
     <div class="page">
         {% for item in page %}
             <div class="item">
+                <div class="cut-line">
+                    <span class="cut-mark">&nbsp;</span>
+                    <span class="cut-mark">&nbsp;</span>
+                </div>
                 <div class="barcode">
                     <img src="data:image/png;base64,{{ item.barcodeData }}" />
+                    <div>{{ item.barcodeText }}</div>
                 </div>
                 <div class="call_number">
                     {% for part in item.spineLabelCallNumber %}
                         <div>{{ part }}</div>
                     {% endfor %}
                 </div>
+                <div class="title">
+                    {{ item.title }}
+                </div>
                 <div class="accession_number">
-                    {{ item.accessionNumber }}
+                    Box {{ item.accessionNumber }}
                 </div>
             </div>
         {% endfor %}
