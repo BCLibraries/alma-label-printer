@@ -1,27 +1,24 @@
-# Slim Framework 3 Skeleton Application
+## Installation
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+1. Clone the repository.
+2. Run `composer install`
+3. Create a *.env* file
+       
+       cp .env.sample .env
+4. Add your SpineOMatic Alma API key to the *.env* file.
+5. Set the caching engine, currently either `redis` or `none`.
+    
+Make sure the *view-cache* and *logs* directories are writable by PHP.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+## Dependencies
 
-## Install the Application
+* PHP 7.1.0 or greater
+* Redis (optional)
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+## Thanks
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+Built using [Slim Skeleton](https://github.com/slimphp/Slim-Skeleton).
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+## License
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
-To run the application in development, you can run these commands 
-
-	cd [my-app-name]
-	php composer.phar start
-
-Run this command in the application directory to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+This tool is made available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
