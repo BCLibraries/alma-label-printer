@@ -17,6 +17,9 @@
                     <img src="data:image/png;base64,{{ item.barcodeData }}" />
                     <div>{{ item.barcodeText }}</div>
                 </div>
+                <div class="location">
+                    NEDL - Ask at Burns Library for retrieval
+                </div>
                 <div class="call_number">
                     {% for part in item.spineLabelCallNumber %}
                         <div>{{ part }}</div>

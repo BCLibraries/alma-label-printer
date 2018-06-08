@@ -28,13 +28,12 @@ body {
 }
 
 .location {
-    margin-bottom: 1em;
-    font-size: 10pt
+    margin-top: .25in;
+    max-width: 2.25in;
 }
 
 .call_number {
-    margin-top: .5in;
-    margin-bottom: .5in;
+    margin-top: .25in;
 }
 
 .page {
@@ -42,6 +41,7 @@ body {
 }
 
 .title {
+    margin-top: .25em;
     margin-bottom: 4em;
 }
 
