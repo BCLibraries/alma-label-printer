@@ -11,6 +11,7 @@ class Item
     private $title = '';
     private $location = '';
     private $barcode = '';
+    private $description = '';
     private $label_map;
 
     public function __construct(string $barcode, array $label_map = [])
@@ -36,6 +37,16 @@ class Item
         return $this->call_number;
     }
 
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
     public function getAccessionNumber(): string
     {
         return $this->accession_number;
@@ -47,8 +58,10 @@ class Item
         $split_class_regex = '/^([A-Z][A-Z]?[A-Z]?)(\d)/';
         $working_call_no = preg_replace($split_class_regex, '\1 \2', $this->call_number);
         $original_parts = explode(' ', $working_call_no);
+        if ($this->description) {
+            $original_parts[] = $this->description;
+        }
         foreach ($original_parts as $original_part) {
-
             $result[] = $this->label_map[$original_part] ?? [$original_part];
         }
         return array_merge(...$result);

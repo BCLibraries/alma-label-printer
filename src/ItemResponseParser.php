@@ -24,6 +24,7 @@ class ItemResponseParser
         $item = new Item($item_data->barcode, $this->label_map);
         $item->setCallNumber($holding_data->call_number);
         $item->setLocation($item_data->location->desc);
+        $item->setDescription($item_data->description);
         $item->setTitle($bib_data->title);
         $item->setAccessionNumber($holding_data->accession_number);
 
