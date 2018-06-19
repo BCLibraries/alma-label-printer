@@ -21,7 +21,7 @@ body {
 
 .item {
     display: block;
-    padding: 6mm 4.6mm;
+    padding: 6mm 7.5mm 6mm 4.6mm;
     margin-left: -1px;
     margin-bottom: -1px;
     position: relative;
