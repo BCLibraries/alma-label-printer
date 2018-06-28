@@ -95,6 +95,7 @@ class AlmaClient
         $responses = [];
         $promises = [];
         foreach ($barcode_batch as $barcode) {
+            $barcode = trim($barcode);
             $url = $this->getURL($barcode);
             if ($this->cache->contains($barcode)) {
                 $responses[] = $this->cache->get($barcode);
