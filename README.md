@@ -6,7 +6,7 @@
        
        cp .env.sample .env
 4. Add your SpineOMatic Alma API key to the *.env* file.
-5. Set the caching engine, currently either `redis` or `none`.
+5. Set the caching engine, currently either `redis` or  `none`.
     
 Make sure the *view-cache* and *logs* directories are writable by PHP.
 
@@ -14,6 +14,18 @@ Make sure the *view-cache* and *logs* directories are writable by PHP.
 
 * PHP 7.3.0 or greater
 * Redis (optional)
+
+## Styling
+
+Styling is built on top of Bootstrap in SCSS.
+
+Install the SCSS binary and Bootstrap SCSS
+
+    npm install
+
+Compile the SCSS
+
+    npx sass src/scss/local.scss ./public/css/local.css -s compressed
 
 ## Thanks
 

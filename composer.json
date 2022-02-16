@@ -20,14 +20,14 @@
     }
   ],
   "require": {
-    "php": ">=7.1.0",
+    "php": ">=7.3.0",
     "slim/slim": "^3.1",
     "slim/php-view": "^2.0",
     "monolog/monolog": "^1.17",
     "guzzlehttp/guzzle": "~6.0",
     "vlucas/phpdotenv": "^2.4",
     "slim/twig-view": "^2.3",
-    "picqer/php-barcode-generator": "^0.2.2"
+    "picqer/php-barcode-generator": "^2.2.1"
   },
   "autoload": {
     "psr-4": {

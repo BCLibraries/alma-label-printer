@@ -13,14 +13,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^8.4.1",
-    "bootstrap": "^4.3.1",
-    "browser-sync": "^2.24.2",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^7.0.1",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "jquery": "3.5.0",
-    "popper.js": "^1.14.3"
+    "bootstrap": "^4.6.0",
+    "sass": "^1.49.7"
   }
 }
