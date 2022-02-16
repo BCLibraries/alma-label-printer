@@ -12,7 +12,7 @@ Make sure the *view-cache* and *logs* directories are writable by PHP.
 
 ## Dependencies
 
-* PHP 7.1.0 or greater
+* PHP 7.3.0 or greater
 * Redis (optional)
 
 ## Thanks

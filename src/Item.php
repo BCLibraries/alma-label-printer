@@ -4,6 +4,7 @@ namespace BCLib\AlmaPrinter;
 
 use Picqer\Barcode\BarcodeGeneratorPNG;
 
+
 class Item
 {
     private $accession_number = '';
@@ -14,7 +15,16 @@ class Item
     private $description = '';
     private $label_map;
 
-    public function __construct(string $barcode, array $label_map = [])
+    # Ugly hack to keep some collection names on one line.
+    private static $rewrite_map = [
+        'IRISH NEWSPAPERS' => 'IRISH_NEWSPAPERS',
+        'LITURGY AND LIFE SERIALS' => 'LITURGY_AND_LIFE_SERIALS',
+        'LITURGY AND LIFE' => 'LITURGY_AND_LIFE',
+        'IRISH FOLDERS' => 'IRISH_FOLDERS',
+        'JESUITICA FOLDERS' => 'JESUITICA_FOLDERS'
+    ];
+
+    public function __construct(string $barcode)
     {
         $this->barcode = $barcode;
         $this->label_map = $label_map;
@@ -54,10 +64,26 @@ class Item
 
     public function getSpineLabelCallNumber(): array
     {
+        // Example call number: DA900 .P46 IRISH NEWSPAPERS
+
         $result = [];
         $split_class_regex = '/^([A-Z][A-Z]?[A-Z]?)(\d)/';
         $working_call_no = preg_replace($split_class_regex, '\1 \2', $this->call_number);
+
+        // Extract collection names from call number to keep collection name on one line.
+        if (preg_match('/[A-Z][A-Z]+[A-Z ]+$/', $working_call_no, $matches)) {
+            $collection_title = $matches[0];
+            $working_call_no = str_replace($collection_title, '', $working_call_no);
+        }
+
+        //
         $original_parts = explode(' ', $working_call_no);
+
+        // Reattach the collection name if one exists.
+        if (isset($collection_title)) {
+            $original_parts[] = $collection_title;
+        }
+
         if ($this->description) {
             $original_parts[] = $this->description;
         }
